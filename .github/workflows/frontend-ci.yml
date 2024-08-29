@@ -97,7 +97,7 @@ jobs:
       
       - name: Docker Build
         run: |
-          docker buildx build -t ${{env.IMAGE_REPO_NAME}}:latest
+          docker build -t ${{env.IMAGE_REPO_NAME}}:latest .
           
       - name: Run test
         run: npm run test
