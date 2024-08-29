@@ -107,4 +107,5 @@ jobs:
           aws eks update-kubeconfig --name cluster --region us-east-1
           cd k8s
           kustomize edit set image backend=543063602710.dkr.ecr.us-east-1.amazonaws.com/${{env.IMAGE_REPO_NAME}}:${{env.IMAGE_TAG}}
+          kustomize build | kubectl delete -f -
           kustomize build | kubectl apply -f -
