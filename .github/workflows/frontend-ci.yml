@@ -81,4 +81,23 @@ jobs:
       - name: Run test
         run: npm run test
 
+  build:
+    name: BUILD JOB
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./starter/frontend
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+  
+      - name: Docker Build
+        run: |
+          docker build -t ${{env.IMAGE_REPO_NAME}}:latest
+          
+      - name: Run test
+        run: npm run test
+
+
     
