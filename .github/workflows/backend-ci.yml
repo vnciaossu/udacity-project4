@@ -1,32 +1,70 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: backend-CI
 
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
+# Controls when the workflow will run
 on:
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
-        # Default value if no value is explicitly provided
-        default: 'World'
-        # Input has to be provided for the workflow to run
-        required: true
-        # The data type of the input
-        type: string
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+env:
+  PYTHON_VERSION: 3.10
+  IMAGE_REPO_NAME: my-backend-app
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "greet"
-  greet:
-    # The type of runner that the job will run on
+  lint:
+    name: LINT JOB
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    defaults:
+      run:
+        working-directory: ./starter/backend
     steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Hello ${{ inputs.name }}"
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Python Environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{env.PYTHON_VERSION}}
+      
+      - name: Install Linting Tools and Pipenv
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipenv flake8
+  
+      - name: Install dependencies
+        run: |
+          pipenv install
+  test: 
+    name: TEST JOB
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./starter/backend
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Python Environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{env.PYTHON_VERSION}}
+      
+      - name: Install Testing Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipenv pytest
+  
+      - name: Install dependencies
+        run: |
+          pipenv install
+  
+      - name: Run Backend Tests
+        run: | 
+          pipenv run test
