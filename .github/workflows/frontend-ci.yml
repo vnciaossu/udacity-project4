@@ -15,7 +15,7 @@ on:
 
 # Environment
 env:
-  NODE_VERSION: 16.14.0
+  NODE_VERSION: 18.14.2
   IMAGE_REPO_NAME: my-frontend-app
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
