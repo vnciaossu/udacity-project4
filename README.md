@@ -1,8 +1,8 @@
 # Link Demo
 
-Frontend: http://aecd4b8ca5f0d4ef58ce8249b5fde8a8-887465882.us-east-1.elb.amazonaws.com.
+Frontend: http://a0cc012a378cf43d4bb883c46c04afe7-1329721920.us-east-1.elb.amazonaws.com .
 
-Backend: http://a23f6af906278498abe65bfe7d6f733c-441741745.us-east-1.elb.amazonaws.com/movies.
+Backend: http://af1531ab37613452a9ded1f8de59a313-1777976429.us-east-1.elb.amazonaws.com/movies .
 
 # Movie Picture Pipeline
 
