@@ -1,6 +1,6 @@
 # Link Demo
 
-Frontend: http://a0cc012a378cf43d4bb883c46c04afe7-1329721920.us-east-1.elb.amazonaws.com .
+Frontend: http://a55401f46762e473b97de55d34511380-1606783614.us-east-1.elb.amazonaws.com/ .
 
 Backend: http://af1531ab37613452a9ded1f8de59a313-1777976429.us-east-1.elb.amazonaws.com/movies .
 
