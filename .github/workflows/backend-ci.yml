@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
   
 env:
-  PYTHON_VERSION: 3.10
+  PYTHON_VERSION: lastest
   IMAGE_REPO_NAME: my-backend-app
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
